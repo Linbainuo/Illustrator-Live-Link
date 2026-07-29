@@ -1,6 +1,6 @@
 # Illustrator-Live Link
 
-Illustrator 2026 与 Blender 4.0 / 4.5 的实时纹理链接插件（Windows）。
+Illustrator 2022–2026 与 Blender 4.0 / 4.5 的实时纹理链接插件（Windows）。
 
 [下载最新版](https://github.com/Linbainuo/Illustrator-Live-Link/releases/latest)
 
@@ -21,3 +21,5 @@ Illustrator 与 Blender 两端插件都需要安装。
 4. Restart Illustrator and Blender.
 
 Both the Illustrator and Blender plug-ins are required.
+
+Tested with Illustrator 2022/2026 and Blender 4.0.2/4.5.8.
