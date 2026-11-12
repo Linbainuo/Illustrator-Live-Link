@@ -1,47 +1,46 @@
-# Illustrator-Live Link
+# Illustrator Live Link + Surface Pen
 
-Illustrator 2022–2026 与 Blender 4.0–5.2 的实时纹理链接插件（Windows）。
+Illustrator 2022–2026 与 Blender 4.0–5.2 的纹理联动、UV 传输和贴面钢笔插件，适用于 Windows 10/11 x64。
 
 [下载最新版](https://github.com/Linbainuo/Illustrator-Live-Link/releases/latest)
 
-1.1.0：修复 Blender 重开后的旧帧与图像保存提示，并在两端插件版本不一致时
-提示需要更新的一端。Illustrator 应用内更新现在显示下载进度，并使用原生
-Updater 完成重启安装，不再调用 PowerShell。
+## 1.2.3 热修
 
-1.1.0 fixes stale frames and image-save prompts in Blender, and reports which
-plug-in needs updating when the Illustrator and Blender versions differ.
-Illustrator in-app updates now show download progress and use a native updater
-for restart installation without invoking PowerShell.
+- 修复重启、多文档关闭后的连接等待和旧材质缓存。
+- 自动创建并连接缺少的材质、图像纹理和输出节点。
+- 支持联动中切换 1024/2048/4096，以及长方形画板。
+- 修复带填充剪切蒙版漏色、钢笔节点和手柄回折。
+- “显示画板”在 Illustrator 2026 跟随背景色和透明状态；旧版 AI 使用白色/透明背景。
 
-## 中文安装
+## 安装与更新
 
-1. 下载并解压 `Illustrator-Live-Link-1.1.0-Windows.zip`。
-2. 如果安装了多个 Illustrator，可先打开需要安装的版本。
-3. 运行 Illustrator 文件夹内的安装脚本。安装器会检测已安装版本和现有插件，
-   并自动选择正在运行的 Illustrator。
-4. 保存并退出选中的 Illustrator；安装器完成更新后可直接重新打开它。
-5. 在 Blender 的 `Preferences > Add-ons > Install from Disk` 中安装 Blender 文件夹内的 ZIP。
+1. 下载并解压 `Illustrator-Live-Link-1.2.3-Windows.zip`。
+2. 保存 AI 画稿，运行 Illustrator 文件夹中的“安装 Illustrator-Live Link.exe”。
+3. 安装器自动选择对应宿主 AIP，并等待 Illustrator 正常退出后替换文件。
+4. Blender 使用“从磁盘安装”选择 `Illustrator-Live-Link-Blender-1.2.3.zip` 并启用。
+5. 选中带 UV 的模型，在 Live Link 面板选择文档并开启联动。钢笔已合并，无需另装旧版独立钢笔。
 
-Illustrator 与 Blender 两端插件都需要安装。
+两端插件应同时更新到同一版本。插件不会替你保存或覆盖 AI 画稿。
 
-如果 Illustrator 自动安装失败，把 Illustrator 安装包内整个
-`Illustrator-Live Link` 文件夹复制到 Illustrator 的 `Plug-ins` 文件夹。
-`.aip`、Renderer 与 Updater 必须保留在同一文件夹中。
+手动安装时，从对应年份目录取出一份 `Illustrator-Live Link.aip`，与核心目录中的 Renderer、Updater 和 Licenses 一起放入目标 Illustrator 的专用插件目录：
 
-## English Installation
+| Illustrator | AIP 来源目录 |
+| --- | --- |
+| 2022–2024 | Illustrator 2022-2024 |
+| 2025 | Illustrator 2025 |
+| 2026 | Illustrator 2026 |
 
-1. Download and extract `Illustrator-Live-Link-1.1.0-Windows.zip`.
-2. If multiple Illustrator versions are installed, open the version you want.
-3. Run the installer inside the Illustrator folder. It detects installed hosts
-   and the existing plug-in, then selects the running Illustrator automatically.
-4. Save and quit the selected Illustrator. The installer finishes the update
-   and can reopen that exact version.
-5. In Blender, open `Preferences > Add-ons > Install from Disk` and select the ZIP inside the Blender folder.
+## 验证范围
 
-Both the Illustrator and Blender plug-ins are required.
+Blender 4.0.2、4.5.8 LTS、5.2.0 共 39 项功能回归通过；三个版本的 ZIP 启动、文件加载及原生更新器的三种 AIP 分流均已验证。5.2 另完成实际侧栏绘制测试。
 
-If automatic Illustrator installation fails, copy the complete
-`Illustrator-Live Link` folder from the package into Illustrator's `Plug-ins`
-folder. Keep the `.aip`, Renderer, and Updater together in that folder.
+Illustrator 2022/2026 已有开发版功能实机记录。2023、2024、2025 为对应 SDK 构建适配，尚未完成独立宿主实机测试。复杂外观使用 Adobe 兼容渲染，刷新速度取决于文档复杂度。
 
-Tested with Illustrator 2022/2026 and Blender 4.0.2/4.5.8/5.2.0.
+## English
+
+Version 1.2.3 fixes reconnection, automatic material binding, live resolution changes, rectangular artboards, painted clipping masks, and Surface Pen editing stability.
+
+Install both plug-ins at the same version. Extract the Windows bundle, save your artwork, and run the native Illustrator installer. Then install the Blender ZIP from disk. The installer selects the 2022–2024, 2025, or 2026 AIP for the target host.
+
+Blender 4.0.2, 4.5.8 LTS, and 5.2.0 passed 39 functional regression checks. Illustrator 2022/2026 have development-build runtime verification; 2023–2025 have SDK build compatibility but no individual host runtime verification. Artboard color following requires Illustrator 2026; older hosts support white/transparent backgrounds.
+
